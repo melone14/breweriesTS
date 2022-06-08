@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import Brewery from "components/Brewery/Brewery";
+import { BreweryType } from "types";
 import {
   Wrapper,
   TableWrapper,
@@ -51,7 +52,6 @@ const DisplayBreweries: React.FC = () => {
           )}
         </TableBody>
       </TableWrapper>
-
       <Pagination />
     </Wrapper>
   );

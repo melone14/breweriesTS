@@ -1,12 +1,13 @@
 import useBreweries from "./useBreweries";
 import { useState, useEffect } from "react";
+import { BreweryType } from "types";
 
 const UsePagination = () => {
   const [breweries] = useBreweries();
-  const [currentItems, setCurrentItems] = useState<[]>([]);
-  const [pageCount, setPageCount] = useState(0);
-  const [itemOffset, setItemOffset] = useState(0);
-  const [viewItemsPerPage, setViewItemsPerPage] = useState(10);
+  const [currentItems, setCurrentItems] = useState<BreweryType[]>([]);
+  const [pageCount, setPageCount] = useState<number>(0);
+  const [itemOffset, setItemOffset] = useState<number>(0);
+  const [viewItemsPerPage, setViewItemsPerPage] = useState<number>(10);
 
   useEffect(() => {
     const endOffset = itemOffset + viewItemsPerPage;
@@ -19,7 +20,7 @@ const UsePagination = () => {
     setItemOffset(newOffset);
   };
 
-  const handleSelectChange = (e: any) => {
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setViewItemsPerPage(parseInt(e.target.value));
   };
   return [currentItems, handleSelectChange, pageCount, handlePageClick];

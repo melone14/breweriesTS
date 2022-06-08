@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Brewery } from "types";
 
 const useBreweries = () => {
-  const [breweries, setBreweries] = useState<[]>([]);
+  const [breweries, setBreweries] = useState<Brewery[]>([]);
 
   useEffect(() => {
     const getBreweries = async () => {

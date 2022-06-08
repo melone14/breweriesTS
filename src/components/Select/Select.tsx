@@ -2,7 +2,7 @@ import React from "react";
 import { SelectWrapper } from "./Select.style";
 
 type Props = {
-  handleChange: (e: any) => void;
+  handleChange: React.ChangeEventHandler<HTMLSelectElement> | undefined;
   quantity: number[];
   defaultValue: string;
 };
