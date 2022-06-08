@@ -1,4 +1,5 @@
 export type BreweryType = {
+  index?: number;
   id: string;
   name: string;
   brewery_type: string | null;
@@ -19,7 +20,7 @@ export type BreweryType = {
 };
 
 export type ErrorType = {
-  error: boolean;
+  isError: boolean;
   message: string;
   status: number | null;
 };

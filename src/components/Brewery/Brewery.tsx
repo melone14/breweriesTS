@@ -1,14 +1,9 @@
 import React from "react";
 import { Wrapper } from "./Brewery.style";
+import { BreweryType } from "types";
 
 type Props = {
-  brewery: {
-    id: string;
-    index: string;
-    name: string;
-    brewery_type: string;
-    phone: string;
-  };
+  brewery: BreweryType;
 };
 
 const Brewery: React.FC<Props> = ({

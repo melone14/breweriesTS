@@ -1,5 +1,5 @@
 import React from "react";
-import { SelectWrapper } from "./Select.style";
+import { SelectWrapper } from "./SelectViewPerPage.style";
 
 type Props = {
   handleChange: React.ChangeEventHandler<HTMLSelectElement> | undefined;
@@ -7,14 +7,20 @@ type Props = {
   defaultValue: string;
 };
 
-const Select: React.FC<Props> = ({ handleChange, quantity, defaultValue }) => {
+const SelectViewPerPage: React.FC<Props> = ({
+  handleChange,
+  quantity,
+  defaultValue,
+}) => {
   return (
     <SelectWrapper onChange={handleChange} defaultValue={defaultValue}>
       {quantity.map((quantinty) => (
-        <option value={`${quantinty}`}>{quantinty}</option>
+        <option value={`${quantinty}`} key={quantinty}>
+          {quantinty}
+        </option>
       ))}
     </SelectWrapper>
   );
 };
 
-export default Select;
+export default SelectViewPerPage;
