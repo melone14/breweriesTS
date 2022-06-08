@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { BreweryType } from "types";
 
 const UsePagination = () => {
-  const [breweries] = useBreweries();
+  const [breweries, isPending, error] = useBreweries();
   const [currentItems, setCurrentItems] = useState<BreweryType[]>([]);
   const [pageCount, setPageCount] = useState<number>(0);
   const [itemOffset, setItemOffset] = useState<number>(0);
@@ -23,7 +23,14 @@ const UsePagination = () => {
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setViewItemsPerPage(parseInt(e.target.value));
   };
-  return [currentItems, handleSelectChange, pageCount, handlePageClick];
+  return [
+    currentItems,
+    handleSelectChange,
+    pageCount,
+    handlePageClick,
+    isPending,
+    error,
+  ];
 };
 
 export default UsePagination;

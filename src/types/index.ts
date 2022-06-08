@@ -17,3 +17,9 @@ export type BreweryType = {
   updated_at: string | Date;
   created_at: string | Date;
 };
+
+export type ErrorType = {
+  error: boolean;
+  message: string;
+  status: number | null;
+};

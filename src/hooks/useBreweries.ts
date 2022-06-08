@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Brewery } from "types";
+import { BreweryType, ErrorType } from "types";
 
 const useBreweries = () => {
-  const [breweries, setBreweries] = useState<Brewery[]>([]);
+  const [breweries, setBreweries] = useState<BreweryType[]>([]);
+  const [isPending, setIsPending] = useState(false);
+  const [error, setError] = useState<ErrorType>({
+    error: false,
+    message: "",
+    status: null,
+  });
 
   useEffect(() => {
     const getBreweries = async () => {
+      setIsPending(true);
       try {
         const response = await axios.get(
-          "https://api.openbrewerydb.org/breweries?per_page=50&page=1"
+          "https://api.openbrewerydb.org/breweesries?per_page=50&page=1"
         );
 
         const indexedData = response.data.map(
@@ -20,16 +27,21 @@ const useBreweries = () => {
         );
 
         setBreweries(indexedData);
-      } catch (error) {
-        setBreweries([]);
-        console.error(error);
+        setIsPending(false);
+      } catch (error: any) {
+        setIsPending(false);
+        setError({
+          error: true,
+          message: error.message,
+          status: error.response.status,
+        });
       }
     };
 
     getBreweries();
   }, []);
 
-  return [breweries];
+  return [breweries, isPending, error];
 };
 
 export default useBreweries;
