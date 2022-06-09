@@ -15,7 +15,7 @@ const DisplayBreweries: React.FC = () => {
   const [currentBreweries, setcurrentBreweries] = useState<BreweryType[]>([]);
   const [pageCount, setPageCount] = useState<number>(0);
   const [itemOffset, setItemOffset] = useState<number>(0);
-  const [viewItemsPerPage, setViewItemsPerPage] = useState<number>(10);
+  const [viewItemsPerPage] = useState<number>(10);
 
   useEffect(() => {
     const endOffset = itemOffset + viewItemsPerPage;
